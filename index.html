@@ -197,9 +197,9 @@ const popups={
   bookshop:{kicker:'TRẠM 01 · HỌC TẬP',title:'📚 Hiệu sách của NheoBi',desc:'Những quyển sách nhỏ mở ra thế giới học tập dễ thương. Chạm vào từng kệ để xem dự án.',html:`
     <div class="banner"><span class="symbol">📖🌷</span><p><b>Learning can be lovely!</b><br>Thư viện các ý tưởng giúp việc học bớt nhàm chán và trở nên sống động hơn.</p></div>
     <div class="product-grid">
-      <div class="product"><div class="product-head"><span>🌷</span>Nheo Bí’s Word Garden</div><p>Góc luyện Writing B1.1: 107 bài email, bản dịch, từ điển và ngữ pháp ngoại tuyến.</p><a class="mini" href="https://github.com/baonhicaonguyen-netizen/nheobi-word-garden" target="_blank" rel="noopener noreferrer">Mở dự án trên GitHub ↗</a></div>
+      <div class="product"><div class="product-head"><span>🌷</span>Nheo Bí’s Word Garden</div><p>Góc luyện Writing B1.1: 107 bài email, bản dịch, từ điển và ngữ pháp ngoại tuyến.</p><a class="mini" href="https://baonhicaonguyen-netizen.github.io/nheobi-word-garden/" target="_blank" rel="noopener noreferrer">🌷 Vào học Word Garden ↗</a></div>
     </div>
-    <div class="blurb">🌷 Dự án được xuất bản trên GitHub. Em có thể xem mã nguồn hoặc mở website từ hướng dẫn trong repository.</div>`},
+    <div class="blurb">🌷 Word Garden đã có trang học trên GitHub Pages. Bấm “Vào học Word Garden” để truy cập trực tiếp.</div>`},
   cafe:{kicker:'TRẠM 02 · CÂU CHUYỆN',title:'☕ NheoBi Café',desc:'Mời em một tách trà và nghe câu chuyện đằng sau chiếc tên dễ thương này nhé.',html:`
     <div class="banner"><span class="symbol">🫖🍪</span><p><b>Xin chào, mình là NheoBi!</b><br>Một thế giới nhỏ dành cho những ý tưởng kỳ lạ nhưng đáng yêu.</p></div>
     <div class="blurb">“Nheo Bí” là biệt danh mẹ đặt — một cái tên vui, gần gũi và mang ý nghĩa riêng. Từ đó, NheoBi Studio ra đời như góc sáng tạo của riêng mình.</div>
@@ -212,7 +212,7 @@ const popups={
   house:{kicker:'TRẠM 03 · DỰ ÁN',title:'🏡 Ngôi nhà sáng tạo',desc:'Góc giới thiệu các dự án NheoBi đã sẵn sàng chia sẻ trên GitHub.',html:`
     <div class="banner"><span class="symbol">🏠🌈</span><p><b>Welcome home!</b><br>Khám phá các thế giới nhỏ mà NheoBi đã và đang xây dựng.</p></div>
     <div class="product-grid">
-      <div class="product"><div class="product-head"><span>🌷</span>Nheo Bí’s Word Garden</div><p>Góc luyện Writing B1.1: 107 bài email, bản dịch, từ điển và ngữ pháp ngoại tuyến.</p><a class="mini" href="https://github.com/baonhicaonguyen-netizen/nheobi-word-garden" target="_blank" rel="noopener noreferrer">Mở dự án trên GitHub ↗</a></div>
+      <div class="product"><div class="product-head"><span>🌷</span>Nheo Bí’s Word Garden</div><p>Góc luyện Writing B1.1: 107 bài email, bản dịch, từ điển và ngữ pháp ngoại tuyến.</p><a class="mini" href="https://baonhicaonguyen-netizen.github.io/nheobi-word-garden/" target="_blank" rel="noopener noreferrer">🌷 Vào học Word Garden ↗</a></div>
     </div>
     <div class="blurb">🌱 Những dự án đang cập nhật được tạm ẩn. Khi hoàn thiện, NheoBi sẽ giới thiệu ở đây.</div>`},
   mail:{kicker:'TRẠM 04 · LIÊN HỆ',title:'💌 Hộp thư của NheoBi',desc:'Một góc nhỏ để mọi người tìm đến các dự án và kết nối với người sáng tạo.',html:`
@@ -229,7 +229,7 @@ const popups={
     <div class="info-row"><b>🐾 Tính cách bé NheoBi</b>Hơi ngái ngủ, thích ngắm hoa, ôm ngôi sao và tò mò về những ý tưởng mới.</div>`}
 };
 const productPopup={
-  letter:{emoji:'🌷',name:'Nheo Bí’s Word Garden',desc:'Góc học Writing B1.1 với đề mồi, bản dịch từng câu và luyện tập ngoại tuyến.',more:'Dự án đã có repository GitHub riêng.',githubUrl:'https://github.com/baonhicaonguyen-netizen/nheobi-word-garden'}
+  letter:{emoji:'🌷',name:'Nheo Bí’s Word Garden',desc:'Góc học Writing B1.1 với đề mồi, bản dịch từng câu và luyện tập ngoại tuyến.',more:'Word Garden đã có website học tập. Nhấn nút bên dưới để vào học trực tiếp; mã nguồn được liên kết trong Hộp thư.',githubUrl:'https://baonhicaonguyen-netizen.github.io/nheobi-word-garden/'}
 };
 let currentPlace=null,visited=new Set(),previousFocus=null,toastTimer=null,mood=0;
 try {let s=JSON.parse(localStorage.getItem('nheobi-demo-stamps-v1')||'[]'); if(Array.isArray(s)) visited=new Set(s.filter(x=>popups[x]));}catch(e){}
@@ -254,7 +254,7 @@ document.getElementById('helpBtn').addEventListener('click',()=>{showToast('Ch�
 dialogBody.addEventListener('click',async(e)=>{
   const p=e.target.closest('[data-show-product]');
   if(p){const obj=productPopup[p.dataset.showProduct];if(!obj)return;
-  dialogBody.innerHTML=`<div class="banner"><span class="symbol">${obj.emoji}</span><p><b>${obj.name}</b><br>${obj.desc}</p></div><div class="blurb">${obj.more}</div><div class="contact-list">${obj.githubUrl?`<a href="${obj.githubUrl}" target="_blank" rel="noopener noreferrer" class="link-like"><span>🐙</span><div>Mở ${obj.name} trên GitHub<small>Cần Internet · xem mã nguồn dự án</small></div></a>`:''}<button class="primary" id="backProjects" type="button">← Trở lại các phòng</button></div>`;
+  dialogBody.innerHTML=`<div class="banner"><span class="symbol">${obj.emoji}</span><p><b>${obj.name}</b><br>${obj.desc}</p></div><div class="blurb">${obj.more}</div><div class="contact-list">${obj.githubUrl?`<a href="${obj.githubUrl}" target="_blank" rel="noopener noreferrer" class="link-like"><span>🐙</span><div>Vào học ${obj.name}<small>Cần Internet · mở website GitHub Pages</small></div></a>`:''}<button class="primary" id="backProjects" type="button">← Trở lại các phòng</button></div>`;
   document.getElementById('backProjects').addEventListener('click',()=>openPlace(currentPlace==='bookshop'?'bookshop':'house'));
   dialogBody.scrollTop=0;return;}
   const copy=e.target.closest('#copyEmail'); if(copy){try{const ok=await copyText('caonguyenbaonhi2008@gmail.com');showToast(ok===false?'Không sao chép được trên trình duyệt này':'Đã sao chép Gmail của NheoBi ♡')}catch(err){showToast('Hãy sao chép thủ công: caonguyenbaonhi2008@gmail.com')}return;}
